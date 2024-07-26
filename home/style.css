@@ -1,0 +1,38 @@
+/* Estilos para o header */
+.header {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.header img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font: bold 24px Arial;
+  color: #343a40;
+  margin: 10px 0 0;
+}
+
+/* Estilos para o footer */
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer p {
+  font-size: 14px;
+  color: #343a40;
+  margin: 0;
+}

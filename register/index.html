@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7 Days to Code JS</title>
+    <link rel="stylesheet" href="style.css" />
+    <div id="config"></div>
+  </head>
+  <body>
+    <div id="header"></div>
+    <section id="formulario">
+      <h1>Cadastro de Pessoas</h1>
+      <form class="js-form">
+        <div class="mb-3">
+        <label class="form-label" for="name">
+          Nome
+          <input
+            class="form-control"
+            id="name"
+            name="name"
+            required
+            type="text"
+            minlength="3"
+            maxlength="120"
+          />
+        </label>
+        </div>
+        <div class="mb-3">
+        <label class="form-label" for="birth-date">
+          Data de Nascimento
+          <input
+            class="form-control"
+            id="birth-date"
+            name="birth-date"
+            required
+            type="date"
+            max="2024-12-31"
+          />
+        </label>
+        </div>
+        <button type="submit" id="saveBtn" class="btn btn-primary">Salvar</button>
+      </form>
+    </section>
+    <div id="footer"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
