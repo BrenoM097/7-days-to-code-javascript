@@ -12,21 +12,21 @@
   border-radius: 50%;
 }
 
-h1 {
+#formulario h1 {
   display: flex;
   justify-content: center;
-  font: bold 24px Arial;
-  color: #343a40;
-  margin: 10px 0 0;
-}
-#tabela {
-  margin: 50px;
-  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.button-container {
+#formulario {
   display: flex;
-  justify-content: flex-end; /* Alinha o botão à direita */
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  
 }
 
 /* Estilos para o footer */

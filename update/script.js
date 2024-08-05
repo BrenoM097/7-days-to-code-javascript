@@ -1,28 +1,30 @@
-const saveBtn = document.querySelector("#saveBtn");
+const attBtn = document.querySelector("#attBtn");
 const form = document.querySelector(".js-form");
 const inputName = document.querySelector("#name");
+const inputBirthDay = document.querySelector("#birthDate");
 
 const date = new Date();
 const hoje = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-console.log(hoje);
 
-let peoplesArr;
+const queryString = window.location.search;
+const urlIdParam = new URLSearchParams(queryString);
+const idParam = urlIdParam.get("id");
 
-if (localStorage.getItem("peoples")) {
-  try {
-    peoplesArr = JSON.parse(localStorage.getItem("peoples"));
-  } catch (e) {
-    console.error("Erro ao analisar JSON do localStorage:", e);
-    peoplesArr = [];
-  }
-}
-
+const peoplesArr = JSON.parse(localStorage.getItem("peoples"));
+const selectedPeople = peoplesArr[idParam];
 class People {
   constructor(name, birthDate) {
     this.name = name;
     this.birthDate = birthDate;
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (selectedPeople != null) {
+    inputName.placeholder = selectedPeople.name;
+    inputBirthDay.placeholder = selectedPeople.birthDate;
+  }
+});
 
 inputName.addEventListener("input", () => {
   var letters = /^[A-Za-z\s]+$/;
@@ -42,16 +44,24 @@ inputName.addEventListener("blur", () => {
   }
 });
 
-saveBtn.addEventListener("click", (event) => {
+attBtn.addEventListener("click", () => {
   const formData = new FormData(form);
-  const name = formData.get("name");
-  const birthDate = formData.get("birth-date");
 
-  peoplesArr.push(new People(name, birthDate));
+  const name =
+    formData.get("name") == "" 
+    ? selectedPeople.name 
+    : formData.get("name");
+
+  const birthDate =
+    formData.get("birth-date") == ""
+      ? selectedPeople.birthDate
+      : formData.get("birth-date");
+
+  selectedPeople.name = name;
+  selectedPeople.birthDate = birthDate;
   localStorage.setItem("peoples", JSON.stringify(peoplesArr));
+  window.location.href = "../home/index.html?";
 });
-
-console.log(localStorage.getItem("peoples"));
 
 function loadTemplate(url, elementId) {
   fetch(url)
